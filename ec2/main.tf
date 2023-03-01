@@ -11,21 +11,22 @@ resource "aws_instance" "ec2" {
   tags = {
     name = var.component
   }
+}
 
-  provisioner "remote-exec" {
+resource "null_resource" "provisioner" {
+  provisioner "remote_exec" {
 
     connection {
-      host = self.public_ip
+      host = aws_instance.ec2.public_ip
       user = "centos"
       password = "DevOps321"
     }
+      inline = [
 
-    inline = [
       "git clone https://github.com/manasa2-reddy/roboshop-shell",
-      "cd roboshop-shell",
-      "sudo bash ${var.component}.sh"
-
-    ]
+        "cd roboshop-shell",
+        "sudo bash ${var.component}.sh"
+      ]
   }
 }
 
