@@ -24,7 +24,7 @@ resource "null_resource" "provisioner" {
       inline = [
       "git clone https://github.com/manasa2-reddy/roboshop-shell",
         "cd roboshop-shell",
-        "sudo bash ${var.component}.sh ${var.env}-sg"
+        "sudo bash ${var.component}.sh ${var.password}"
       ]
   }
 }
@@ -55,7 +55,7 @@ resource "aws_security_group" "sg" {
 
 
 resource "aws_route53_record" "record" {
-  zone_id ="Z1032141216L485QW30RSR"
+  zone_id = "Z075358629IBJXB7AQLTD"
   name = "${var.component}-dev.devopsb71.store"
   type = "A"
   ttl = 30
