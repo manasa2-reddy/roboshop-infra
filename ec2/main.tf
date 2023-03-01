@@ -21,9 +21,7 @@ resource "null_resource" "provisioner" {
       user = "centos"
       password = "DevOps321"
     }
-    
       inline = [
-
       "git clone https://github.com/manasa2-reddy/roboshop-shell",
         "cd roboshop-shell",
         "sudo bash ${var.component}.sh"
@@ -62,7 +60,6 @@ resource "aws_route53_record" "record" {
   type = "A"
   ttl = 30
   records = [aws_instance.ec2.private_ip]
-
 }
 
 
