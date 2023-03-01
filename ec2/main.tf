@@ -24,7 +24,7 @@ resource "null_resource" "provisioner" {
       inline = [
       "git clone https://github.com/manasa2-reddy/roboshop-shell",
         "cd roboshop-shell",
-        "sudo bash ${var.component}.sh"
+        "sudo bash ${var.component}.sh ${var.env}-sg"
       ]
   }
 }
@@ -68,3 +68,4 @@ variable "instance_type" {}
 variable "env" {
   default = "dev"
 }
+variable "password" {}
