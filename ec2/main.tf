@@ -7,7 +7,7 @@ data "aws_ami" "ami" {
 resource "aws_instance" "ec2" {
   ami           = data.aws_ami.ami.image_id
   instance_type = var.instance_type
-  vpc_security_group_ids = [var.sg_id]
+  vpc_security_group_ids = [var.sg]
   tags = {
     name = var.component
   }
@@ -21,7 +21,7 @@ resource "aws_instance" "ec2" {
     }
 
     inline = [
-      "git clone https://github.com/manasa2-reddy/roboshop-shell",
+      "git clone https://github.com/manasa2-reddy/roboshop-shell"
       "cd roboshop-shell"
       "sudo bash ${var.component}.sh"
 
