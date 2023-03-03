@@ -23,7 +23,6 @@ resource "null_resource" "provisioner" {
       user = "centos"
       password = "DevOps321"
     }
-
     
       inline = [
       "ansible-pull -i localhost, -u  https://github.com/manasa2-reddy/roboshop-ansible roboshop.yml -e role_name+${var.component}"
