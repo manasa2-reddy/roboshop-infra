@@ -25,7 +25,7 @@ resource "null_resource" "provisioner" {
     }
     
       inline = [
-      "ansible-pull -i localhost, -u  https://github.com/manasa2-reddy/roboshop-ansible roboshop.yml -e role_name=${var.component}"
+      "ansible-pull -i localhost, -u https://github.com/manasa2-reddy/roboshop-ansible roboshop.yml -e role_name=${var.component}"
 
       ]
   }
@@ -70,3 +70,4 @@ variable "instance_type" {}
 variable "env" {
   default = "dev"
 }
+     
