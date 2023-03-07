@@ -1,4 +1,4 @@
-Variable "instances" {
+variable "instances" {
   default = {
     frontend = {
       name = "frontend"
