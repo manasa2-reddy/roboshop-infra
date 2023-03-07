@@ -1,9 +1,7 @@
-resource "aws_ssm_parameter" "parameter" {
-count = length(var.parameters)
-name  = var.parameters[count.index].name
-type  = var.parameters[count.index].type
-value = var.parameters[count.index].value
-
+module "ec2" {
+  for_each      = var.instances
+  source        = "./ec2"
+  component     = each.value["name"]
+  instance_type = each.value["type"]
+  env           = var.env
 }
-
-variable "parameters" {}
