@@ -1,4 +1,10 @@
+data "aws-caller_identity" "current" {}
 
+data "aws_ami" "ami"{
+  most_recent= true
+  name_regex ="devops-practice-with-ansible"
+  owners= [data.aws_caller_identity.current.account_id]
+}
 
 resource "aws_instance" "ec2" {
   ami                    = data.aws_ami.ami.image_id
@@ -22,7 +28,7 @@ resource "null_resource" "provisioner" {
     }
 
     inline = [
-         "labauto ansible"
+      "ansible-pull -i localhost, -U https://github.com/manasa2-reddy/oboshop-ansible roboshop.yml -e role_name=${var.component} -e env=${var.env}"
     ]
 
   }
