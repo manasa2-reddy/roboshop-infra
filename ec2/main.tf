@@ -1,8 +1,3 @@
-data "aws-caller_identity" "current" {}
-  most_recent= true
-  name_regex ="devops-practice-with-ansible"
-  owners= [data.aws_caller_identity.current.account_id]
-
 
 resource "aws_instance" "ec2" {
   ami                    = data.aws_ami.ami.image_id
